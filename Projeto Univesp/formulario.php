@@ -80,6 +80,7 @@
     </style>
 </head>
 <body>
+    <a href="login.php">Voltar</a>
     <div class="box">
         <form action="">
             <fieldset>

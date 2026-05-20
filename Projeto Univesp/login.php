@@ -25,27 +25,30 @@
             outline: none;
             font-size: 15px;
         }
-        button{
+        .inputSubmit{
             border: none;
             padding: 15px;
             width: 100%;
             border-radius: 10px;
             font-size: 15px;
         }
-        button:hover{
+        .inputSubmit:hover{
             background-color: deepskyblue;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
+    <a href="home.php">Voltar</a>
     <div>
         <h1>Login</h1>
-        <input type="text" placeholder="Usuário">
-        <br><br>
-        <input type="password" placeholder="Senha">
-        <br><br>
-        <button>Entrar</button>
+        <form action="testLogin.php" method="POST">
+            <input type="text" name="email" placeholder="Email">
+            <br><br>
+            <input type="password" name="senha" placeholder="Senha">
+            <br><br>
+            <input class="inputSubmit" type="submit" name="submit" value="Enviar">
+        </form>
     </div>
 </body>
 </html>

@@ -1,3 +1,29 @@
+<?php
+
+if(isset($_POST['submit']))
+{
+    include_once('config.php');
+
+    $cpf = $_POST['cpf'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    
+    $senha = $_POST['senha'];
+
+    $stmt = $conexao->prepare(
+    "INSERT INTO usuarios(cpf,nome,email,senha)
+    VALUES (?, ?, ?, ?)"
+    );
+
+    $stmt->bind_param("ssss", $cpf, $nome, $email, $senha);
+
+    $stmt->execute();
+
+    header('Location: login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,32 +108,39 @@
 <body>
     <a href="home.php">Voltar</a>
     <div class="box">
-        <form action="">
-            <fieldset>
-                <legend><b>Cadastro de Usuários</b></legend>
-                <br>
-                <div class="inputBox">
-                    <input type="text" name="cpf" id="cpf" class="inputUser" required>
-                    <label for="cpf" class="labelInput">CPF</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
-                    <label for="nome" class="labelInput">Nome completo</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="email" id="email" class="inputUser" required>
-                    <label for="email" class="labelInput">Email</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="senha" name="senha" id="senha" class="inputUser" required>
-                    <label for="telefone" class="labelInput">Senha</label>                
-                <br><br>
-                <input type="submit" name="submit" id="submit">
-            </fieldset>
-        </form>
+<form action="" method="POST">
+
+    <div class="inputBox">
+        <input type="text" name="cpf" class="inputUser" required>
+        <label class="labelInput">CPF</label>
+    </div>
+
+    <br><br>
+
+    <div class="inputBox">
+        <input type="text" name="nome" class="inputUser" required>
+        <label class="labelInput">Nome completo</label>
+    </div>
+
+    <br><br>
+
+    <div class="inputBox">
+        <input type="email" name="email" class="inputUser" required>
+        <label class="labelInput">Email</label>
+    </div>
+
+    <br><br>
+
+    <div class="inputBox">
+        <input type="password" name="senha" class="inputUser" required>
+        <label class="labelInput">Senha</label>
+    </div>
+
+    <br><br>
+
+    <input type="submit" name="submit" id="submit">
+
+</form>
     </div>
 </body>
 </html>
